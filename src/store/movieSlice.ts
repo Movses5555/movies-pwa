@@ -29,7 +29,7 @@ const initialState: InitialState = {
   loading: false,
   movies: [],
   movie: {},
-  totalResults: "0",
+  totalResults: '',
   error: ''
 }
 
@@ -61,7 +61,7 @@ const movieSlice = createSlice({
           state.error = ''
         } else {
           state.movies = []
-          state.totalResults = '0'
+          state.totalResults = ''
           state.error = action.payload.Error
         }
       }
@@ -75,6 +75,7 @@ const movieSlice = createSlice({
     builder.addCase(fetchMovie.pending, state => {
       state.loading = true
       state.movies = []
+      state.totalResults = ''
     })
     builder.addCase(
       fetchMovie.fulfilled,
